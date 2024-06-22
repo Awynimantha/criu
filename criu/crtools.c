@@ -108,6 +108,16 @@ static int parse_criu_mode(char *mode)
 	return 0;
 }
 
+void printArray(char *arr[], char* arrayName) {
+	printf("%s", "inside the function");
+	printf("------------------%s",arr[0]);
+	for (int i = 0; i < 10; i++){
+		printf("%s", arrayName);
+		printf("%s",arr[i]);
+	}
+	
+}
+
 int main(int argc, char *argv[], char *envp[])
 {
 	int ret = -1;
@@ -115,7 +125,8 @@ int main(int argc, char *argv[], char *envp[])
 	bool has_exec_cmd = false;
 	bool has_sub_command;
 	int state = PARSING_GLOBAL_CONF;
-
+	printf("%s","CRIU is called-------------------------------------");
+	printArray(argv,"argv\n");
 	BUILD_BUG_ON(CTL_32 != SYSCTL_TYPE__CTL_32);
 	BUILD_BUG_ON(__CTL_STR != SYSCTL_TYPE__CTL_STR);
 	/* We use it for fd overlap handling in clone_service_fd() */
@@ -132,6 +143,7 @@ int main(int argc, char *argv[], char *envp[])
 	if (argc < 2)
 		goto usage;
 
+	//default things
 	init_opts();
 
 	ret = parse_options(argc, argv, &usage_error, &has_exec_cmd, state);
