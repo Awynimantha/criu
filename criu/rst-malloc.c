@@ -138,7 +138,7 @@ void rst_mem_align(int type)
 {
 	struct rst_mem_type_s *t = &rst_mems[type];
 	void *ptr;
-
+	// ptr is less than 
 	ptr = (void *)round_up((unsigned long)t->free_mem, sizeof(void *));
 	t->free_bytes -= (ptr - t->free_mem);
 	t->free_mem = ptr;

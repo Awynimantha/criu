@@ -2114,7 +2114,7 @@ int cr_dump_tasks(pid_t pid)
 	pr_info("========================================\n");
 	pr_info("Dumping processes (pid: %d comm: %s)\n", pid, __task_comm_info(pid));
 	pr_info("========================================\n");
-
+	printf("%s","dumping");
 	/*
 	 *  We will fetch all file descriptors for each task, their number can
 	 *  be bigger than a default file limit, so we need to raise it to the
@@ -2132,9 +2132,10 @@ int cr_dump_tasks(pid_t pid)
 		pr_err("Pre dump script failed with %d!\n", pre_dump_ret);
 		goto err;
 	}
+	//allocate align,memory of memery size of dump stats in the static array
 	if (init_stats(DUMP_STATS))
 		goto err;
-
+	//todo
 	if (cr_plugin_init(CR_PLUGIN_STAGE__DUMP))
 		goto err;
 

@@ -3,6 +3,7 @@
         "stdlib.h": "c",
         "scm.h": "c",
         "socket.h": "c",
-        "util.h": "c"
+        "util.h": "c",
+        "compiler.h": "c"
     }
 }

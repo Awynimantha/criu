@@ -210,7 +210,13 @@ int cr_plugin_init(int stage)
 
 	if (opts.libdir == NULL) {
 		path = getenv("CRIU_LIBS_DIR");
+		printf("==========lib env==========");
+		printf("lib env path =0 %s", path );
+
 		if (path)
+			//libdir in the header get the value of the path 
+			//this function use xstrdup which handles error gracefully 
+
 			SET_CHAR_OPTS(libdir, path);
 		else {
 			if (access(CR_PLUGIN_DEFAULT, F_OK))

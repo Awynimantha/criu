@@ -49,7 +49,7 @@ static int run_shell_scripts(const char *action)
 	int retval = 0;
 	struct script *script;
 	static unsigned env_set = 0;
-
+printf("runing shell scripts");
 #define ENV_IMGDIR  0x1
 #define ENV_ROOTPID 0x2
 
@@ -86,8 +86,10 @@ static int run_shell_scripts(const char *action)
 		}
 	}
 
+	printf("---------------scirpts starts here------------");
 	list_for_each_entry(script, &scripts, node) {
 		int err;
+		printf("%s\n", script->path);
 		pr_debug("\t[%s]\n", script->path);
 		err = cr_system(-1, -1, -1, script->path, (char *[]){ script->path, NULL }, 0);
 		if (err)

@@ -126,7 +126,6 @@ int main(int argc, char *argv[], char *envp[])
 	bool has_sub_command;
 	int state = PARSING_GLOBAL_CONF;
 	printf("%s","CRIU is called-------------------------------------");
-	printArray(argv,"argv\n");
 	BUILD_BUG_ON(CTL_32 != SYSCTL_TYPE__CTL_32);
 	BUILD_BUG_ON(__CTL_STR != SYSCTL_TYPE__CTL_STR);
 	/* We use it for fd overlap handling in clone_service_fd() */
@@ -253,7 +252,7 @@ int main(int argc, char *argv[], char *envp[])
 			return 1;
 		}
 	}
-
+	printf("--------%d------", opts.mode);
 	/*
 	 * When a process group becomes an orphan,
 	 * its processes are sent a SIGHUP signal
@@ -298,6 +297,7 @@ int main(int argc, char *argv[], char *envp[])
 		if (!opts.tree_id)
 			goto opt_pid_missing;
 
+		printf("%s","its hit");
 		return cr_dump_tasks(opts.tree_id);
 	}
 
