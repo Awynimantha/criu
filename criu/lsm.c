@@ -391,6 +391,7 @@ int lsm_check_opts(void)
 		return 0;
 
 	aux = strchr(opts.lsm_profile, ':');
+	printf("\n--aux---%s\n", aux );
 	if (aux == NULL) {
 		pr_err("invalid argument %s for --lsm-profile\n", opts.lsm_profile);
 		return -1;

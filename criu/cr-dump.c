@@ -2135,13 +2135,15 @@ int cr_dump_tasks(pid_t pid)
 	//allocate align,memory of memery size of dump stats in the static array
 	if (init_stats(DUMP_STATS))
 		goto err;
-	//todo
+		
+	//the path is null to the plugin repo
 	if (cr_plugin_init(CR_PLUGIN_STAGE__DUMP))
 		goto err;
 
+	//linux security module
 	if (lsm_check_opts())
 		goto err;
-
+	
 	if (irmap_load_cache())
 		goto err;
 

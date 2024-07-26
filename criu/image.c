@@ -298,15 +298,19 @@ struct cr_imgset *cr_imgset_open_range(int pid, int from, int to, unsigned long 
 {
 	struct cr_imgset *imgset;
 	unsigned int i;
-
+	printf("%s", "Reached the cr_imagset_open_range function");
+	//Allocate memory of size imageset and initize them with null
 	imgset = alloc_cr_imgset(to - from);
+	//Null imageset is taken
 	if (!imgset)
 		goto err;
 
 	from++;
 	imgset->fd_off = from;
+	printf("%s", "\n--------------------Printing the descriptor index----------------\n");
 	for (i = from; i < to; i++) {
 		struct cr_img *img;
+		printf("%d\n", i);
 
 		img = open_image(i, flags, pid);
 		if (!img) {
@@ -328,6 +332,7 @@ err:
 
 struct cr_imgset *cr_task_imgset_open(int pid, int mode)
 {
+	//use the cr_imagset_open_range in the above
 	return cr_imgset_open(pid, TASK, mode);
 }
 

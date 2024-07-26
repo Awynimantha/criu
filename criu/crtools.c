@@ -222,7 +222,7 @@ int main(int argc, char *argv[], char *envp[])
 			pr_err("--restore-detached and --exec-cmd cannot be used together\n");
 			goto usage;
 		}
-
+		// 
 		opts.exec_cmd = xmalloc((argc - optind) * sizeof(char *));
 		if (!opts.exec_cmd)
 			return 1;
