@@ -603,8 +603,8 @@ fail:
 	pr_err("failed to write policy in AA namespace %s\n", namespace);
 	return -1;
 }
-During the checkpoint phase, CRIU needs to handle security policies associated with the processes being dumped. 
-//  
+//During the checkpoint phase, CRIU needs to handle security policies associated with the processes being dumped. 
+ 
 static int do_suspend(bool suspend)
 {
 	int i;

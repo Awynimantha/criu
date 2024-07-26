@@ -2209,8 +2209,9 @@ int cr_dump_tasks(pid_t pid)
 
 	if (collect_and_suspend_lsm() < 0)
 		goto err;
-
+		
 	for_each_pstree_item(item) {
+		printf("%s", "\n==================Dumping the dumper======================");
 		if (dump_one_task(item, parent_ie))
 			goto err;
 	}
